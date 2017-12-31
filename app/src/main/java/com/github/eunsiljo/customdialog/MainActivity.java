@@ -11,13 +11,17 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.github.eunsiljo.customdialoglib.adapter.SelectButtonAdapter;
 import com.github.eunsiljo.customdialoglib.view.CustomDatePickerDialog;
 import com.github.eunsiljo.customdialoglib.view.CustomDialog;
 import com.github.eunsiljo.customdialoglib.view.CustomInputDialog;
+import com.github.eunsiljo.customdialoglib.view.CustomMultiPickerDialog;
 import com.github.eunsiljo.customdialoglib.view.CustomSelectDialog;
+import com.github.eunsiljo.customdialoglib.view.CustomStartEndPickerDialog;
+import com.github.eunsiljo.customdialoglib.view.CustomTimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> demos = new ArrayList<>();
         demos.add("CustomDialog");
         demos.add("CustomDialog - Neutral");
+        demos.add("CustomDialog - Button Color");
         demos.add("CustomInputDialog");
         demos.add("CustomInputDialog - Prefill");
         demos.add("CustomSelectDialog - CheckBox List");
@@ -71,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
         demos.add("CustomSelectDialog - Button");
         demos.add("CustomDatePickerDialog");
         demos.add("CustomDatePickerDialog - Year, Month");
-        demos.add("CustomDialog - Button Color");
+        demos.add("CustomTimePickerDialog");
+        demos.add("CustomTimePickerDialog - 24 Hour");
+        demos.add("CustomStartEndPickerDialog");
+        demos.add("CustomMultiPickerDialog");
         mAdapter.addAll(demos);
     }
 
@@ -109,6 +117,27 @@ public class MainActivity extends AppCompatActivity {
                         });
                 break;
             case 2:
+                //CustomDialog - Button Color
+                showAlertDialogOkCancel(MainActivity.this,
+                        "Are you sure you want to sign out?",
+                        "Sign Out",
+                        "Cancel",
+                        R.color.colorAccent,
+                        Color.parseColor("#212121"),
+                        new CustomDialog.DialogButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull CustomDialog dialog) {
+                                showToast(MainActivity.this, "Click Sign Out!");
+                            }
+                        },
+                        new CustomDialog.DialogButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull CustomDialog dialog) {
+                                showToast(MainActivity.this, "Click Cancel!");
+                            }
+                        });
+                break;
+            case 3:
                 //CustomInputDialog
                 showInputAlertDialog(MainActivity.this,
                         "Please enter your review.",
@@ -125,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 3:
+            case 4:
                 //CustomInputDialog - Prefill
                 showInputAlertDialog(MainActivity.this,
                         "www.instagram.com/[instagram id]",
@@ -142,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 4:
+            case 5:
                 //CustomSelectDialog - CheckBox List
                 showSelectAlertDialog(MainActivity.this,
                         mSamples,
@@ -164,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 5:
+            case 6:
                 //CustomSelectDialog - RadioButton List
                 showSelectAlertDialog(MainActivity.this,
                         mSamples,
@@ -179,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 6:
+            case 7:
                 //CustomSelectDialog - Button
                 showSelectAlertDialog(MainActivity.this,
                         mSamples,
@@ -201,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 7:
+            case 8:
                 //CustomDatePickerDialog
                 showDatePickerAlertDialog(MainActivity.this,
                         2017,
@@ -216,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 8:
+            case 9:
                 //CustomDatePickerDialog - Year, Month
                 showDatePickerAlertDialog(MainActivity.this,
                         2017,
@@ -231,24 +260,59 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                 break;
-            case 9:
-                //CustomDialog - Button Color
-                showAlertDialogOkCancel(MainActivity.this,
-                        "Are you sure you want to sign out?",
-                        "Sign Out",
-                        "Cancel",
-                        R.color.colorAccent,
-                        Color.parseColor("#212121"),
-                        new CustomDialog.DialogButtonCallback() {
+            case 10:
+                //CustomTimePickerDialog
+                showTimePickerAlertDialog(MainActivity.this,
+                        18,
+                        23,
+                        false,
+                        new CustomTimePickerDialog.DialogTimePickerCallback() {
                             @Override
-                            public void onClick(@NonNull CustomDialog dialog) {
-                                showToast(MainActivity.this, "Click Sign Out!");
+                            public void onTimeSet(@NonNull CustomTimePickerDialog dialog,
+                                                  TimePicker view, int hourOfDay, int minute) {
+                                showToast(MainActivity.this, "Pick " + hourOfDay + ":" + minute + "!");
                             }
-                        },
-                        new CustomDialog.DialogButtonCallback() {
+                        });
+                break;
+            case 11:
+                //CustomTimePickerDialog - 24 Hour
+                showTimePickerAlertDialog(MainActivity.this,
+                        18,
+                        23,
+                        true,
+                        new CustomTimePickerDialog.DialogTimePickerCallback() {
                             @Override
-                            public void onClick(@NonNull CustomDialog dialog) {
-                                showToast(MainActivity.this, "Click Cancel!");
+                            public void onTimeSet(@NonNull CustomTimePickerDialog dialog,
+                                                  TimePicker view, int hourOfDay, int minute) {
+                                showToast(MainActivity.this, "Pick " + hourOfDay + ":" + minute + "!");
+                            }
+                        });
+                break;
+            case 12:
+                //CustomStartEndPickerDialog
+                showStartEndPickerAlertDialog(MainActivity.this,
+                        11, 20,
+                        13, 20,
+                        new CustomStartEndPickerDialog.DialogStartEndPickerCallback() {
+                            @Override
+                            public void onStartEndSet(@NonNull CustomStartEndPickerDialog dialog,
+                                                      View view, int startHourOfDay, int startMinute,
+                                                      int endHourOfDay, int endMinute) {
+                                showToast(MainActivity.this, "Pick " + startHourOfDay + ":" + startMinute + "~" + endHourOfDay + ":" + endMinute + "!");
+                            }
+                        });
+
+                break;
+            case 13:
+                //CustomMultiPickerDialog
+                showMultiPickerAlertDialog(MainActivity.this,
+                        2, 1, 1000,
+                        2, mSamples.toArray(new String[mSamples.size()]),
+                        new CustomMultiPickerDialog.DialogMultiPickerCallback() {
+                            @Override
+                            public void onNumberSet(@NonNull CustomMultiPickerDialog dialog,
+                                                    View view, int number1, int number2) {
+                                showToast(MainActivity.this, "Pick " + number1 + " " + mSamples.get(number2) + "!");
                             }
                         });
                 break;
@@ -408,6 +472,69 @@ public class MainActivity extends AppCompatActivity {
                 .showDay(dayOfMonth > 0)
                 .datePickerCallback(listenerDatePicker)
                 .dividerColor(dividerColor)
+                .cancelable(true)
+                .build();
+        dialog.show();
+
+        return dialog;
+    }
+
+    private CustomDialog showTimePickerAlertDialog(Activity activity, int hour, int minute,
+                                                         boolean is24HourView,
+                                                         CustomTimePickerDialog.DialogTimePickerCallback listenerTimePicker){
+        if(activity.isFinishing()) {
+            return null;
+        }
+        CustomDialog dialog = new CustomTimePickerDialog.Builder(activity)
+                .hour(hour)
+                .minute(minute)
+                .is24HourView(is24HourView)
+                .timePickerCallback(listenerTimePicker)
+                .cancelable(true)
+                .build();
+        dialog.show();
+
+        return dialog;
+    }
+
+    private CustomDialog showMultiPickerAlertDialog(Activity activity,
+                                                          int number1, int minValue1, int maxValue1,
+                                                          int number2, String[] displayValues2,
+                                                          CustomMultiPickerDialog.DialogMultiPickerCallback listenerMultiPicker){
+        if(activity.isFinishing()) {
+            return null;
+        }
+        int minValue2 = 0;
+        int maxValue2 = 0;
+        if(displayValues2 != null){
+            maxValue2 = displayValues2.length-1;
+        }
+        CustomDialog dialog = new CustomMultiPickerDialog.Builder(activity)
+                .number1(number1)
+                .minMaxValue1(minValue1, maxValue1)
+                .number2(number2)
+                .minMaxValue2(minValue2, maxValue2)
+                .displayValues2(displayValues2)
+                .multiPickerCallback(listenerMultiPicker)
+                .cancelable(true)
+                .build();
+        dialog.show();
+
+        return dialog;
+    }
+
+    private CustomDialog showStartEndPickerAlertDialog(Activity activity, int startHour, int startMinute,
+                                                             int endHour, int endMinute,
+                                                             CustomStartEndPickerDialog.DialogStartEndPickerCallback listenerStartEndPicker){
+        if(activity.isFinishing()) {
+            return null;
+        }
+        CustomDialog dialog = new CustomStartEndPickerDialog.Builder(activity)
+                .startHour(startHour)
+                .startMinute(startMinute)
+                .endHour(endHour)
+                .endMinute(endMinute)
+                .startEndPickerCallback(listenerStartEndPicker)
                 .cancelable(true)
                 .build();
         dialog.show();

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.github.eunsiljo.customdialoglib.R;
+import com.github.eunsiljo.customdialoglib.utils.DialogUtils;
 
 
 /**
@@ -30,6 +31,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
 
     protected View layoutDefaultButton;
     protected View layoutNeutralButton;
+    protected View layoutBackground;
 
     public enum DialogAction {
         DEFAULT,
@@ -64,6 +66,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
         neutralButton = (TextView)findViewById(R.id.btnNeutral);
         layoutDefaultButton = findViewById(R.id.layoutDefaultButton);
         layoutNeutralButton = findViewById(R.id.layoutNeutralButton);
+        layoutBackground = findViewById(R.id.layoutBackground);
 
         initDialogLayout();
     }
@@ -97,6 +100,12 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
             negativeButton.setBackgroundColor(mBuilder.neutralColor);
         }else{
             neutralButton.setBackgroundResource(mBuilder.neutralDrawable);
+        }
+
+        if(mBuilder.backgroundColor != -1){
+            layoutBackground.setBackgroundColor(mBuilder.backgroundColor);
+        }else{
+            layoutBackground.setBackgroundResource(mBuilder.backgroundDrawable);
         }
 
         setVisibilityActionButton(mBuilder.action);
@@ -165,9 +174,11 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
         protected int positiveDrawable = -1;
         protected int negativeDrawable = -1;
         protected int neutralDrawable = -1;
+        protected int backgroundDrawable = -1;
         protected int positiveColor = -1;
         protected int negativeColor = -1;
         protected int neutralColor = -1;
+        protected int backgroundColor = -1;
 
         protected boolean cancelable = true;
         protected boolean canceledOnTouchOutside = true;
@@ -187,6 +198,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
             positiveDrawable = R.color.colorPrimary;
             negativeDrawable = R.color.color_gray_light;
             neutralDrawable = R.color.colorPrimary;
+            backgroundDrawable = R.color.white;
         }
 
         public final Context getContext() {
@@ -267,6 +279,18 @@ public class CustomDialog extends Dialog implements View.OnClickListener{
         public Builder neutralColor(@ColorRes int neutralRes) {
             if (neutralRes == 0) return this;
             this.neutralColor = neutralRes;
+            return this;
+        }
+
+        public Builder backgroundDrawable(@DrawableRes int backgroundRes) {
+            if (backgroundRes == 0) return this;
+            this.backgroundDrawable = backgroundRes;
+            return this;
+        }
+
+        public Builder backgroundColor(@ColorRes int backgroundRes) {
+            if (backgroundRes == 0) return this;
+            this.backgroundColor = backgroundRes;
             return this;
         }
 

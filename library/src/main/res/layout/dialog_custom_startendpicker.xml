@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_dialog_elevation"
+        android:layout_gravity="center"
+        android:elevation="@dimen/common_dialog_elevation">
+
+        <LinearLayout
+            android:id="@+id/startEndPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <com.github.eunsiljo.customdialoglib.view.CustomTimePicker
+                android:id="@+id/startPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:theme="@android:style/Theme.Holo.Light" />
+
+            <TextView
+                style="@style/textLarge"
+                android:text="~"/>
+
+            <com.github.eunsiljo.customdialoglib.view.CustomTimePicker
+                android:id="@+id/endPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner"
+                android:theme="@android:style/Theme.Holo.Light" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/startEndPicker">
+            <include layout="@layout/content_dialog_neutral_button"/>
+            <include layout="@layout/content_dialog_button"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_dialog_elevation"
+        android:layout_gravity="center"
+        android:elevation="@dimen/common_dialog_elevation">
+
+        <LinearLayout
+            android:id="@+id/multiPicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/common_margin_medium"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <NumberPicker
+                android:id="@+id/numberPicker1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                android:theme="@android:style/Theme.Holo.Light"/>
+
+            <NumberPicker
+                android:id="@+id/numberPicker2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:descendantFocusability="blocksDescendants"
+                android:theme="@android:style/Theme.Holo.Light"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/multiPicker">
+            <include layout="@layout/content_dialog_neutral_button"/>
+            <include layout="@layout/content_dialog_button"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+</FrameLayout>

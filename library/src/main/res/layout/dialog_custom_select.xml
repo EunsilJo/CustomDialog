@@ -6,11 +6,11 @@
     android:paddingBottom="@dimen/common_dialog_margin">
 
     <RelativeLayout
+        android:id="@+id/layoutBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_dialog_elevation"
         android:layout_gravity="center"
-        android:background="@color/white"
         android:elevation="@dimen/common_dialog_elevation">
         <LinearLayout
             android:layout_width="match_parent"

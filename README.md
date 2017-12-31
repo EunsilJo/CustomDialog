@@ -17,13 +17,14 @@ allprojects {
 Add the dependency
 ```java
 dependencies {
-	compile 'com.github.EunsilJo:CustomDialog:1.0.1'
+	compile 'com.github.EunsilJo:CustomDialog:1.0.2'
 }
 ```
 
 ## How to use
 ### CustomDialog
- <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/2.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/1.png?raw=true" height="400" /> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/10.png?raw=true" height="400"/>
+<img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/2.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/1.png?raw=true" height="400" /> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/10.png?raw=true" height="400"/>
+
 ```java
 new CustomDialog.Builder(activity)
         .content("The verification e-mail sent. Please check.")
@@ -53,6 +54,7 @@ You can change color of buttons.
 
 ### CustomInputDialog
 <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/3.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/4.png?raw=true" height="400"/>
+
 ```java
 new CustomInputDialog.Builder(activity)
         .hint("Please enter your review.")
@@ -75,6 +77,7 @@ You can set text of prefill.
 
 ### CustomSelectDialog
 <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/5.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/7.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/6.png?raw=true" height="400"/>
+
 ```java
 new CustomSelectDialog.Builder(activity)
         .items(Arrays.asList("Apple", "Banana", "Cherry", "Durian", "Melon", "Orange"))
@@ -100,6 +103,7 @@ You can set single choice list.
 
 ### CustomDatePickerDialog
 <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/8.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/9.png?raw=true" height="400"/>
+
 ```java
 new CustomDatePickerDialog.Builder(activity)
         .year(2017)
@@ -118,6 +122,58 @@ You can show/hide year, month and day.
 ```java
         .showDay(false)
 ```
+
+#### v1.0.2 updated
+
+### CustomTimePickerDialog
+<img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/11.png?raw=true" height="400"/> <img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/12.png?raw=true" height="400"/>
+
+```java
+new CustomTimePickerDialog.Builder(activity)
+        .hour(18)
+        .minute(23)
+        .timePickerCallback(new CustomTimePickerDialog.DialogTimePickerCallback(){...})
+        .cancelable(true)
+        .build()
+        .show();
+```
+You can show/hide AM/PM.
+```java
+        .is24HourView(true)
+```
+
+### CustomStartEndPickerDialog
+<img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/13.png?raw=true" height="400"/>
+
+```java
+new CustomStartEndPickerDialog.Builder(activity)
+        .startHour(11)
+        .startMinute(20)
+        .endHour(13)
+        .endMinute(20)
+        .startEndPickerCallback(CustomStartEndPickerDialog.DialogStartEndPickerCallback(){...})
+        .cancelable(true)
+        .build()
+        .show();
+```
+You can pick start and end time.
+
+### CustomMultiPickerDialog
+<img src="https://github.com/EunsilJo/CustomDialog/blob/master/screenshots/14.png?raw=true" height="400"/>
+
+```java
+new CustomMultiPickerDialog.Builder(activity)
+        .number1(2)
+        .minMaxValue1(1, 1000)
+        .number2(2)
+        .minMaxValue2(0, maxValue2)
+        .displayValues2(new String[]{"Apple", "Banana", "Cherry", "Durian", "Melon", "Orange"})
+        .multiPickerCallback(CustomMultiPickerDialog.DialogMultiPickerCallback(){...})
+        .cancelable(true)
+        .build()
+        .show();
+```
+You can pick two items.
 
 ### +
 Please check the demo app to see examples.

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import java.lang.reflect.Field;
@@ -16,17 +17,32 @@ import java.lang.reflect.Field;
 public class CustomDatePicker extends DatePicker {
     public CustomDatePicker(Context context) {
         super(context);
-        setPadding(0,0,0,0);
+        init();
     }
 
     public CustomDatePicker(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setPadding(0,0,0,0);
+        init();
     }
 
     public CustomDatePicker(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        init();
+    }
+
+    private void init(){
         setPadding(0,0,0,0);
+
+        try {
+            Class<?> clsParent = Class.forName("com.android.internal.R$id");
+            NumberPicker clsMonth = (NumberPicker) findViewById(clsParent.getField("month").getInt(null));
+
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams)clsMonth.getLayoutParams();
+            lp.leftMargin = 0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean setShowYear(boolean show) {

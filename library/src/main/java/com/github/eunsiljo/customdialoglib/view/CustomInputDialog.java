@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.eunsiljo.customdialoglib.R;
+import com.github.eunsiljo.customdialoglib.utils.DialogUtils;
 
 import java.lang.reflect.Field;
 
@@ -161,6 +162,13 @@ public class CustomInputDialog extends CustomDialog implements View.OnClickListe
         txtLength.setText(String.format(getContext().getString(R.string.custom_input_dialog_length),
                 length, mBuilder.maxLength));
     }
+
+    @Override
+    public void dismiss() {
+        DialogUtils.hideKeyboard(this, mBuilder.getContext());
+        super.dismiss();
+    }
+
 
     /**
      * The class used to construct a CustomInputDialog.
