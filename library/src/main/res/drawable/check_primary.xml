@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorPrimary"/>
+            <corners android:radius="@dimen/common_radius_size_s" />
+            <size android:width="@dimen/common_icon_size_s" android:height="@dimen/common_icon_size_s"/>
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_check_white_18dp" />
+</layer-list>

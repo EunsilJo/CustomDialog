@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_dialog_elevation"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:elevation="@dimen/common_dialog_elevation">
+        <com.github.eunsiljo.customdialoglib.view.CustomDatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:spinnersShown="true"
+            android:theme="@android:style/Theme.Holo.Light"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/datePicker">
+            <include layout="@layout/content_dialog_neutral_button"/>
+            <include layout="@layout/content_dialog_button"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+</FrameLayout>

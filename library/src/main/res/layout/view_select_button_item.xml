@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/common_row_height_ss"
+    android:layout_margin="@dimen/common_margin_micro_s"
+    android:padding="@dimen/common_margin_micro_s">
+
+    <TextView
+        android:id="@+id/txtSelect"
+        style="@style/textMedium"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+</FrameLayout>

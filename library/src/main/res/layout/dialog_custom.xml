@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/common_dialog_margin"
+    android:paddingBottom="@dimen/common_dialog_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_dialog_elevation"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:elevation="@dimen/common_dialog_elevation">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/layoutMessage"
+                style="@style/dialogPaddingDefault"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/message"
+                    style="@style/textLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="@dimen/common_line_spacing"
+                    android:scrollbars="vertical"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/content_dialog_neutral_button"/>
+                <include layout="@layout/content_dialog_button"/>
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/common_row_height_ss">
+    <LinearLayout
+        style="@style/dialogItemPaddingDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/common_dialog_margin_left"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/imgSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtSelect"
+            style="@style/textLarge"
+            android:layout_marginLeft="@dimen/common_margin_small"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+</FrameLayout>
