@@ -17,7 +17,7 @@ allprojects {
 Add the dependency
 ```java
 dependencies {
-	compile 'com.github.EunsilJo:CustomDialog:1.0.2'
+	compile 'com.github.EunsilJo:CustomDialog:1.0.3'
 }
 ```
 
@@ -174,6 +174,18 @@ new CustomMultiPickerDialog.Builder(activity)
         .show();
 ```
 You can pick two items.
+
+#### v1.0.3 updated
+
+### CustomDatePickerDialog
+
+```java
+    public interface DialogDatePickerCallback {
+        void onDateChanged(@NonNull CustomDatePickerDialog dialog, DatePicker view, int year, int monthOfYear, int dayOfMonth);
+        ...
+    }
+```
+* *onDateChanged* : The callback used to indicate the user changed the date.
 
 ### +
 Please check the demo app to see examples.
