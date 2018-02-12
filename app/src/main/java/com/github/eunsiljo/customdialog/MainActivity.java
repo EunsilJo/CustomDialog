@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
@@ -239,6 +240,12 @@ public class MainActivity extends AppCompatActivity {
                         CustomDialog.DialogColor.PRIMARY,
                         new CustomDatePickerDialog.DialogDatePickerCallback() {
                             @Override
+                            public void onDateChanged(@NonNull CustomDatePickerDialog dialog,
+                                                      DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                Log.d("MainActivity", "Select " + year + "/" + monthOfYear + "!");
+                            }
+
+                            @Override
                             public void onDateSet(@NonNull CustomDatePickerDialog dialog,
                                                   DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 showToast(MainActivity.this, "Pick " + year + "/" + monthOfYear + "/" + dayOfMonth + "!");
@@ -253,6 +260,12 @@ public class MainActivity extends AppCompatActivity {
                         -1,
                         CustomDialog.DialogColor.PRIMARYDARK,
                         new CustomDatePickerDialog.DialogDatePickerCallback() {
+                            @Override
+                            public void onDateChanged(@NonNull CustomDatePickerDialog dialog,
+                                                      DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                Log.d("MainActivity", "Select " + year + "/" + monthOfYear + "!");
+                            }
+
                             @Override
                             public void onDateSet(@NonNull CustomDatePickerDialog dialog,
                                                   DatePicker view, int year, int monthOfYear, int dayOfMonth) {

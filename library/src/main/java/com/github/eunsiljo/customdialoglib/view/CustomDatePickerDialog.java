@@ -53,7 +53,8 @@ public class CustomDatePickerDialog extends CustomDialog implements View.OnClick
         datePicker.setShowMonth(mBuilder.showMonthOfYear);
         datePicker.setShowDay(mBuilder.showDayOfMonth);
 
-        datePicker.updateDate(mBuilder.year, (mBuilder.monthOfYear - 1), mBuilder.dayOfMonth);
+        //datePicker.updateDate(mBuilder.year, (mBuilder.monthOfYear - 1), mBuilder.dayOfMonth);
+        datePicker.init(mBuilder.year, (mBuilder.monthOfYear - 1), mBuilder.dayOfMonth, mDateChangedListener);
     }
 
     private int getColorDrawable(){
@@ -81,6 +82,18 @@ public class CustomDatePickerDialog extends CustomDialog implements View.OnClick
         }
         if(mBuilder.autoDismiss) dismiss();
     }
+
+    private DatePicker.OnDateChangedListener mDateChangedListener = new DatePicker.OnDateChangedListener(){
+
+        @Override
+        public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            CustomDatePickerDialog.DialogDatePickerCallback callback = mBuilder.datePickerCallback;
+            if(callback != null){
+                callback.onDateChanged(CustomDatePickerDialog.this, datePicker,
+                        datePicker.getYear(), (datePicker.getMonth() + 1), datePicker.getDayOfMonth());
+            }
+        }
+    };
 
     /**
      * The class used to construct a CustomDatePickerDialog.
@@ -164,7 +177,7 @@ public class CustomDatePickerDialog extends CustomDialog implements View.OnClick
     }
 
     public interface DialogDatePickerCallback {
-
+        void onDateChanged(@NonNull CustomDatePickerDialog dialog, DatePicker view, int year, int monthOfYear, int dayOfMonth);
         void onDateSet(@NonNull CustomDatePickerDialog dialog, DatePicker view, int year, int monthOfYear, int dayOfMonth);
     }
 }
